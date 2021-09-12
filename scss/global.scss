@@ -1,0 +1,147 @@
+@import './index.scss';
+
+@font-face{
+    font-family: "Genesys";
+    src: url("/fonts/Genesys.ttf");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face{
+    font-family: "SFProDisplay";
+    src: url("/fonts/SFPRODISPLAYREGULAR.woff");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face{
+    font-family: "SFProDisplay Bold";
+    src: url("/fonts/SFPRODISPLAYBOLD.woff");
+    font-style: normal;
+    font-weight: bold;
+    font-display: swap;
+}
+
+
+body {
+    background-color: $secondary-color;
+    font-family: "SFProDisplay";
+    color: $primary-color;
+}
+
+h1, h2{
+    font-family: "Genesys";
+    font-weight: normal;
+}
+
+h1 {
+    font-size: 5.1vmax;
+    color: $primary-color;
+    text-decoration: none;
+    cursor: pointer;
+    margin: 0;
+    @include sm {
+        font-size: 6.5vmax;
+    }
+
+    @include lg {
+        font-size: 4vmax;
+    }
+
+    @include xl{
+        font-size: 3.3vmax;
+    }
+    
+}
+
+h2{
+    font-size: 3.6vmax;
+
+    @include md {
+        font-size: 3.3vmax;
+    }
+
+    @include lg {
+        font-size: 2.6vmax;
+    }
+    
+}
+
+h3 {
+    font-size: 3.3vmax;
+    color: $primary-color-light;
+    @include md {
+        font-size: 3vmax;
+    }
+
+    @include lg {
+        font-size: 2.3vmax;
+    }
+    
+}
+
+h4 {
+    font-size: 2.7vmax;
+    color: $primary-color-subheading;
+    @include md{
+        font-size: 2.3vmax;
+    }
+    @include lg{
+        font-size: 2.2vmax;
+    }
+    @include xl{
+        font-size: 1.7vmax;
+    }
+
+    &.b{
+        font-family: 'SFProDisplay Bold';
+    }
+
+    &.warning {
+        color: $warning-color;
+    }
+    &.error {
+        color: $error-color;
+    }
+    &.success {
+        color: $success-color;
+    }
+}
+
+p{
+    font-size: 2.5vmax;
+    color: $primary-color-text;
+
+    @include md{
+        font-size: 1.8vmax;
+    }
+    @include xl{
+        font-size: 1.2vmax;
+    }
+    &.b{
+        font-family: "SFProDisplay Bold";
+    }
+    &.warning {
+        color: $warning-color;
+    }
+    &.error {
+        color: $error-color;
+    }
+    &.success {
+        color: $success-color;
+    }
+}
+
+button {
+    font-size: 2.5vmax;
+    @include md{
+        font-size: 2vmax;
+    }
+    @include xl{
+        font-size: 1.3vmax;
+    }
+}
+
+

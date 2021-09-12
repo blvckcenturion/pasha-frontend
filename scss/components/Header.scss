@@ -1,0 +1,67 @@
+.header{
+    position: sticky;
+    border-bottom: $primary-color solid 1px;
+    box-sizing: border-box;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    background-color: $secondary-color;
+    display: flex;
+    flex-direction: row;
+    height: 60px;
+    align-items: center;
+    justify-content: space-between;
+
+    @include md{
+        height: 80px;
+    }
+    
+    .menu-toggler, .shopping-cart {
+        width: 20%;
+        
+        @include md {
+            width:15%;
+        }
+
+        @include lg {
+            width:10%;
+        }
+    }
+
+    .menu-toggler{
+        border-right: $primary-color solid 1px;
+        cursor: pointer;
+    }
+
+    .logo {
+        width: 60%;
+        @include md {
+            width:70%;
+        }
+        @include lg {
+            width:80%;
+        }
+    }
+
+    .shopping-cart {
+        border-left: $primary-color solid 1px;
+        a {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .shopping-cart, .menu-toggler, .logo, .shopping-cart a{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+    }
+
+    .plus-icon, .shopbag-icon {
+        height: 60%;
+        @include lg {
+            height:60%;
+        }
+    }    
+}
