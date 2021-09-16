@@ -16,8 +16,11 @@ const BasicLayout = ({ children }) => {
                 <link rel="preload" href="/fonts/SFPRODISPLAYBOLD.woff" as="font" crossOrigin="" />
             </Head>
             
-            <Header/>
-            {children}
+            <Header />
+            <div className="content">
+                {children}
+            </div>
+            
             <Footer/>
         </div>
     )

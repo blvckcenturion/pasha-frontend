@@ -1,0 +1,104 @@
+.product-box{
+    width: 100%;
+    background-color: $secondary-color;
+    height: 45vmax;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    transition: 0.5s ease;
+    cursor: pointer; 
+
+    @include md{
+        height: 30vmax;
+    }
+    @include lg{
+        height: 25vmax;
+    }
+
+    &:hover{
+        background-color: white;
+        box-sizing: border-box;
+        z-index:10;
+        position: relative;
+    }
+
+    .product-img{
+        height: 50%;
+        width: 90%;
+        display: inherit;
+        align-items: center;
+        justify-content: center;
+        @include md{
+            height: 60%;
+        }
+        img{
+            mix-blend-mode: multiply;
+            z-index:1;
+            width: 20vmax;
+            object-fit: cover;
+            @include md{
+                width: 20vw;
+            }
+
+            @include lg{
+                width: 15vw;
+            }
+        }
+    }
+    &-details {
+        width: 90%;
+        height: 50%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        @include md{
+            height: 30%;
+        }
+
+        h5{
+            margin: 0;
+            height: 30%;
+            margin-bottom:15px;
+        }
+        
+        p{
+            margin:0;
+        }
+        &-price{
+            width: 100%;
+            height: 40%;
+            display: inherit;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            @include md{
+                flex-direction: row;
+                justify-content: space-evenly;
+            }
+            .discount{
+                
+                padding:5px 20px;
+                border: 1px solid black;
+                margin-top:10px;
+                @include md{
+                    padding:10px;
+                    margin-top:0;
+                }
+            }
+        }
+        
+    }
+    
+}
+
+.product-spacing {
+    width: 100%;
+    background-color: $secondary-color;
+}
+.discount{
+    padding:15px;
+    border: 1px solid $primary-color;
+}

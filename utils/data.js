@@ -19,4 +19,9 @@ export const SOCIAL_MEDIA_LINKS = [
     }
 
 ]
+
+export const MAIN_VIDEO = {
+    src: 'https://cms-cdn.goat.com/690c80633ed3-528b-ce11-a021-05d26d33.mp4',
+    type: 'video/mp4'
+}
     

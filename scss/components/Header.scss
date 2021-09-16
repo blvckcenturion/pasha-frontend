@@ -11,6 +11,7 @@
     height: 60px;
     align-items: center;
     justify-content: space-between;
+    z-index: 100;
 
     @include md{
         height: 80px;
@@ -89,6 +90,7 @@ nav{
     position: fixed;
     top: 0;
     width: 100%;
+    z-index:101;
     display: none;
     height: calc(100% - 60px);
     margin-top: 60px;

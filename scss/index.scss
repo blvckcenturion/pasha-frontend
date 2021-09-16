@@ -4,3 +4,15 @@
 //Components
 @import './components/Header.scss';
 @import './components/Footer.scss';
+@import './components/MainSection.scss';
+@import './components/Product/ProductGrid.scss';
+@import './components/Product/Product.scss';
+@import './components/Product/ProductSection.scss';
+@import './components/Product/ProductCategory.scss';
+
+//Layouts
+@import './layouts/BasicLayout.scss';
+
+//Pages
+
+@import './pages/Product.scss';

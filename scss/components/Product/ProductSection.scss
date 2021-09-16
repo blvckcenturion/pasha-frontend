@@ -1,0 +1,32 @@
+.product-section{
+    width: 95vw;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 40px 0;
+
+    .product-section__heading{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        text-align: start;
+        @include md{
+            h2{
+                width: 50%;
+            }
+        }
+        
+
+        @include md{
+            justify-content: space-between;
+        }
+        button{
+            height: 60px;
+            width: 100px;
+            @include md{
+                width: 200px;
+            }
+        }
+    }
+}

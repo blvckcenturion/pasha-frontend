@@ -1,0 +1,15 @@
+.product-category{
+    width: 95vw;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    &-img{
+        width: 100%;
+        img{
+            width: 100%;
+            object-fit: cover;
+        }
+        
+    }
+}

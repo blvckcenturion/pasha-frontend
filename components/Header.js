@@ -13,12 +13,12 @@ const Header = () => {
     const toggleMenu = () => {
         if (isOpen === null) {
             setIsOpen(true);
-            setTimeout(() => { setTimerDone(true)}, 6000)
+            setTimeout(() => { setTimerDone(true)}, 5500)
         } else if (isOpen === true || isOpen === false) {
             if (timerDone) {
                 setIsOpen(!isOpen);
                 setTimerDone(false);
-                isOpen ? setTimeout(() => { setTimerDone(true)}, 6000) : setTimeout(() => { setTimerDone(true)}, 5500)
+                isOpen ? setTimeout(() => { setTimerDone(true)}, 5500) : setTimeout(() => { setTimerDone(true)}, 5500)
                 
             }
          }
@@ -48,15 +48,15 @@ const Header = () => {
                     {opacity:1, x: 0, scale: 1, stagger: { amount: 1.5 }, duration: 0.7, ease: "power3.inOut", delay: 0 }
                 )
                 .fromTo('.nav-social',
-                    { opacity: 0, x: 200, scale: 0, },
-                    {stagger: { amount: 0.5 }, opacity:1, x:0, scale: 1, duration: 0.7, ease: "power3.inOut"}
+                    { opacity: 0, x: 200, scale: 0},
+                    {stagger: { amount: 0.5 }, opacity:1, x:0, scale: 1, duration: 0.7, ease: "power3.inOut", delay: -0.5}
                 )
             tl.play();
         } else if(isOpen === false){
             tl
                 .to('.nav-social', { opacity: 0, x: 200, scale: 0, duration: 0.7, ease: "power3.inOut", stagger:{ amount:0.5} })
                 .to('.nav-link', { opacity: 0, x: -200, scale: 0.5, ease: "power3.inOut", duration: 0.5, stagger: {amount: 1.5}})
-                .to('.nav-links', { scaleX: 0, duration: 0.5, delay: 0.5 })
+                .to('.nav-links', { scaleX: 0, duration: 0.5, delay: 0 })
                 .to('.nav-content', { scale: 0, duration: 1, ease: 'power3.inOut' })
                 .to('.nav', { display: 'none' })
                 .to('body', { duration: 0, overflow: 'visible' })
