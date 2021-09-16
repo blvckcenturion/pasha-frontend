@@ -11,9 +11,11 @@
         align-items: center;
         justify-content: center;
         text-align: start;
+        text-align: center;
         @include md{
             h2{
                 width: 50%;
+                text-align: start;
             }
         }
         

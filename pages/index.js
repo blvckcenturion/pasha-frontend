@@ -9,7 +9,8 @@ const Home = ({ products, categories }) => {
   return (
     <>
       <MainSection products={ products }/>
-      { categories.map(category => <ProductCategory key={ category.id } category={ category }/>) }
+      {categories.map(category => <ProductCategory key={category.id} category={category} />)}
+      
     </>
   )
 }

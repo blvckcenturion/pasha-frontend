@@ -2,9 +2,9 @@ import React from 'react'
 import ProductGrid from './ProductGrid'
 import { useWindowSize } from '../../utils/useWindowSize'
 import { useRouter } from 'next/router'
-const ProductSection = ({ sectionTitle, products }) => {
+const ProductSection = ({ sectionTitle, products,url }) => {
     const router = useRouter();
-    const Button = () => <button onClick={ () => router.push('/')}>Ver Todos</button>
+    const Button = () => <button onClick={ () => router.push(url)}>Ver Todos</button>
     const { width } = useWindowSize()
     
     return (

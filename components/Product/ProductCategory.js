@@ -6,7 +6,7 @@ import ProductSection from './ProductSection'
 
 const ProductCategory = ({ category }) => {
     const [products, setProducts] = useState([])
-    
+
     useEffect(() => {
         (async () => {
             const response = await getLatestProducts({
@@ -26,7 +26,7 @@ const ProductCategory = ({ category }) => {
                     </a>
                 </Link>
             </div>
-            <ProductSection sectionTitle={category.categoryName} products={ products }/>
+            <ProductSection url={`/categories/${category.url}`} sectionTitle={category.categoryName} products={ products }/>
         </div> 
     )
 }

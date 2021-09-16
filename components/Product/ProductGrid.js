@@ -7,6 +7,7 @@ const ProductGrid = ({ products }) => {
         <div className="product-grid">
             {products.map(e => <Product key={e.id} product={e} />)}
             <ProductSpacing/>
+            <ProductSpacing />
             <ProductSpacing/>
         </div>
     )
