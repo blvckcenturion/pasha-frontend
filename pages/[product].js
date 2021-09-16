@@ -138,7 +138,12 @@ export const getStaticProps = async (context) => {
 }
 
 export const getStaticPaths = async () => {
-    const allProducts = await axios.get('http://localhost:1337/products/');
+    const allProducts = await axios({
+        method: 'get',
+        baseURL: 'http://192.168.0.2:1337',
+        url: '/products',
+
+    });
     const paths = allProducts?.data.map(product => `/${product.id}`)
     return {
         paths:paths||[],

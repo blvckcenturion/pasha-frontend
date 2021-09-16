@@ -9,10 +9,6 @@
     min-height: 100px;
     margin: 40px 0;
 
-    @include md {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
     @include lg{
         grid-template-columns: repeat(4,1fr);
     }
