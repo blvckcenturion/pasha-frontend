@@ -2,6 +2,7 @@
 import React from 'react';
 import axios from 'axios';
 import ProductGrid from '../../components/Product/ProductGrid';
+import { LOCAL } from '../../utils/data';
 
 const Category = ({ category, products,cat }) => {
 
@@ -13,7 +14,7 @@ const Category = ({ category, products,cat }) => {
                 <h2>{ categoryName.toUpperCase()}</h2>
             </div>
             <div className="category-details__img">
-                <img src={`http://192.168.0.2:1337${categoryImg.url}`} alt="" />
+                <img src={`${LOCAL}${categoryImg.url}`} alt="" />
             </div>
             <div className="category-details__desc">
                 <p>{ categoryDesc }</p>
@@ -30,7 +31,7 @@ const Category = ({ category, products,cat }) => {
 export const getStaticProps = async (context) => {
     const { category } = context.params;
 
-    axios.defaults.baseURL = 'http://192.168.0.2:1337'
+    axios.defaults.baseURL = LOCAL
 
     const categoryData = await axios({
         method: 'get',
@@ -60,7 +61,7 @@ export const getStaticProps = async (context) => {
 export const getStaticPaths = async () => {
     const allCategories = await axios({
         method: 'get',
-        baseURL: 'http://192.168.0.2:1337',
+        baseURL: LOCAL,
         url: '/categories',
     });
     const paths = allCategories?.data.map(category => `/categories/${category.url}`)

@@ -2,6 +2,7 @@
 import Link from 'next/dist/client/link'
 import React, { useEffect, useState} from 'react'
 import { getLatestProducts } from '../../api/product'
+import { LOCAL } from '../../utils/data'
 import ProductSection from './ProductSection'
 
 const ProductCategory = ({ category }) => {
@@ -22,7 +23,7 @@ const ProductCategory = ({ category }) => {
             <div className="product-category-img">
                 <Link href={`/categories/${category.url}`}>
                     <a>
-                        <img src={`http://192.168.0.2:1337${category.categoryImg.url}`} alt="god loves you"/>
+                        <img src={`${LOCAL}${category.categoryImg.url}`} alt="god loves you"/>
                     </a>
                 </Link>
             </div>

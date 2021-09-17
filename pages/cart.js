@@ -4,6 +4,7 @@ import useCart from '../hooks/useCart'
 import { getLatestProducts } from '../api/product'
 import { getEntry } from '../api/entry'
 import wasend from 'wasend'
+import { LOCAL } from '../utils/data'
 
 const Cart = () => {
     const [products, setProducts] = useState([])
@@ -106,7 +107,7 @@ const ProductCard = ({ product: {product, entry, quantity }}) => {
         <div className="product-card">
             <div className="product-info">
                 <div className="product-img">
-                    <img src={`http://192.168.0.2:1337${productImg.url}`} alt={`${productName}`} />
+                    <img src={`${LOCAL}${productImg.url}`} alt={`${productName}`} />
                 </div>
                 <h5>{ productName}</h5>
             </div>

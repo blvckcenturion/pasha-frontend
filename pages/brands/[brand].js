@@ -2,6 +2,7 @@
 import React from 'react'
 import axios from 'axios'
 import ProductGrid from '../../components/Product/ProductGrid';
+import { LOCAL } from '../../utils/data';
 
 const Brand = ({ brand, products }) => {
     console.log(brand);
@@ -19,7 +20,7 @@ const Brand = ({ brand, products }) => {
                         <p>{ brandDesc }</p>
                     </div>
                     <div className="brand-details__info-img">
-                        <img src={`http://192.168.0.2:1337${url}`} alt={`${brandName} logo`} />
+                        <img src={`${LOCAL}${url}`} alt={`${brandName} logo`} />
                     </div>
                 </div>
             </div>
@@ -33,12 +34,12 @@ const Brand = ({ brand, products }) => {
 export const getStaticProps = async (context) => {
     const { brand } = context.params;
     
-    axios.defaults.baseURL = 'http://192.168.0.2:1337'
+    axios.defaults.baseURL = LOCAL
 
     const brandData = await axios({
         method: 'get',
         url: '/brands',
-        baseURL: 'http://192.168.0.2:1337',
+        baseURL: LOCAL,
         params: {
             brandURL: brand
         }
@@ -64,7 +65,7 @@ export const getStaticProps = async (context) => {
 export const getStaticPaths = async () => {
     const allBrands = await axios({
         method: 'get',
-        baseURL: 'http://192.168.0.2:1337',
+        baseURL: LOCAL,
         url: '/brands',
     });
     const paths = allBrands?.data.map(brand => `/brands/${brand.brandURL}`)

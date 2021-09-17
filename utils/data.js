@@ -1,5 +1,8 @@
 import { faFacebookF, faTiktok, faInstagram, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 export const CART = 'cart';
+export const LOCAL = 'http://192.168.0.2:1337';
+
+
 export const SOCIAL_MEDIA_LINKS = [
     {
         href: 'https://www.facebook.com/',

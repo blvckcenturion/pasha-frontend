@@ -18,6 +18,7 @@ import numeral from 'numeral';
 import useCart from '../hooks/useCart';
 import Modal from '../components/Modal';
 import gsap from 'gsap'
+import { LOCAL } from '../utils/data';
 
 SwiperCore.use([Autoplay, Pagination, Navigation]);
 
@@ -84,10 +85,10 @@ const Product = ({ product, productEntries }) => {
                     navigation={true}
                         className="product-slider">
                         {productGallery.length > 0 
-                            ? productGallery.map((image, index) => <SwiperSlide key={index} className="product-slide"><img src={`http://192.168.0.2:1337${image.url}`}></img></SwiperSlide>)
+                            ? productGallery.map((image, index) => <SwiperSlide key={index} className="product-slide"><img src={`${LOCAL}${image.url}`}></img></SwiperSlide>)
                             : (
                                 <SwiperSlide className="product-slide">
-                                    <img src={`http://192.168.0.2:1337${productImg.url}`} alt="god loves you" />
+                                    <img src={`${LOCAL}${productImg.url}`} alt="god loves you" />
                                 </SwiperSlide>
                             )
                         }
@@ -195,7 +196,7 @@ const Product = ({ product, productEntries }) => {
 
 export const getStaticProps = async (context) => {
     const { product } = context.params;
-    axios.defaults.baseURL = 'http://192.168.0.2:1337'
+    axios.defaults.baseURL = LOCAL
     const productData = await axios({
         method: 'get',
         url: '/products',
@@ -224,7 +225,7 @@ export const getStaticProps = async (context) => {
 export const getStaticPaths = async () => {
     const allProducts = await axios({
         method: 'get',
-        baseURL: 'http://192.168.0.2:1337',
+        baseURL: LOCAL,
         url: '/products',
     });
     const paths = allProducts?.data.map(product => `/${product.id}`)

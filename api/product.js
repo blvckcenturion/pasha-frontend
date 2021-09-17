@@ -1,5 +1,6 @@
 import axios from 'axios';
-axios.defaults.baseURL = 'http://192.168.0.2:1337';
+import { LOCAL } from '../utils/data';
+axios.defaults.baseURL = LOCAL;
 
 export const getLatestProducts = async (params) => {
     return axios({

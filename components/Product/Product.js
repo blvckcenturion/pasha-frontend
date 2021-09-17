@@ -2,7 +2,7 @@
 import React from 'react'
 import Link from 'next/link';
 import numeral from 'numeral';
-
+import { LOCAL } from '../../utils/data';
 
 const Product = ({ product}) => {
 
@@ -13,7 +13,7 @@ const Product = ({ product}) => {
         <Link href={`/${id}`} passHref>
         <div className="product-box">
             <div className="product-img">
-                    <img src={`http://192.168.0.2:1337${url}`} alt="GOAT PITA" />
+                    <img src={`${LOCAL}${url}`} alt="GOAT PITA" />
             </div>
             <div className="product-box-details">
                 <h5>{ productName}</h5>
