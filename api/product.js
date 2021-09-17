@@ -13,3 +13,4 @@ export const getLatestProducts = async (params) => {
         return [];
     });
 }
+

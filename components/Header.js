@@ -91,20 +91,20 @@ const Header = () => {
         <nav className="nav">
             <div className="nav-content">
                 <div className="nav-links">
-                    <Link href="/">
-                        <a className="nav-link">COLECCIONES</a>
+                    <Link href="/all">
+                        <a className="nav-link" onClick={ toggleMenu }>TODOS LOS PRODUCTOS</a>
                     </Link>
                     <Link href="/1">
-                        <a className="nav-link">LOOKS</a>
+                        <a className="nav-link" onClick={ toggleMenu }>LOOKS</a>
                     </Link>
                     <Link href="/2">
-                        <a className="nav-link">MIS FAVORITOS</a>
+                        <a className="nav-link" onClick={ toggleMenu }>MIS FAVORITOS</a>
                     </Link>
                     <Link href="/3">
-                        <a className="nav-link">MI CUENTA</a>
+                        <a className="nav-link" onClick={ toggleMenu }>MI CUENTA</a>
                     </Link>
-                    <Link href="/4">
-                        <a className="nav-link">BUSCAR PRODUCTOS</a>
+                    <Link href="/search">
+                        <a className="nav-link" onClick={ toggleMenu }>BUSCAR PRODUCTOS</a>
                     </Link>
                 </div>
                 <div className="nav-socials">

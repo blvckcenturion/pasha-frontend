@@ -5,7 +5,7 @@ import ProductCategory from '../components/Product/ProductCategory';
 import axios from 'axios';
 const Home = ({ products, categories }) => {
   const {width, height} = useWindowSize();
-  console.log(categories)
+
   return (
     <>
       <MainSection products={ products }/>
@@ -30,9 +30,6 @@ export const getStaticProps = async () => {
   const categories = await axios({
     method: 'get',
     url: '/categories',
-    params: {
-      _limit: 2,
-    }
   })
 
   return {

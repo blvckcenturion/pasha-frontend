@@ -10,7 +10,7 @@ const MainSection = ({ products }) => {
                 <source data-src={MAIN_VIDEO.src} src={MAIN_VIDEO.src} type={ MAIN_VIDEO.type}/>
                 Tu buscador no soporta este video
             </video>
-            <ProductSection url={'/new'}sectionTitle={"Nuevos Lanzamientos"} products={ products }/>
+            <ProductSection url={'/all'}sectionTitle={"Nuevos Lanzamientos"} products={ products }/>
         </div>
     )
 }

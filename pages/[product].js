@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import React from 'react'
+import { useState } from 'react'
 import ProductGrid from '../components/Product/ProductGrid';
 import Link from 'next/link';
 import SwiperCore, {
@@ -15,11 +15,12 @@ import { faHeart as HeartNoFill } from '@fortawesome/free-regular-svg-icons';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 import numeral from 'numeral';
+import Modal from '../components/Modal';
 
 SwiperCore.use([Autoplay, Pagination, Navigation]);
 
 const Product = ({ product }) => {
-    console.log(product)
+
     const {
         productName,
         brand,
@@ -48,7 +49,7 @@ const Product = ({ product }) => {
                     }}
                     navigation={true}
                         className="product-slider">
-                        {productGallery.length 
+                        {productGallery.length > 0 
                             ? productGallery.map((image, index) => <SwiperSlide key={index} className="product-slide"><img src={`http://192.168.0.2:1337${image.url}`}></img></SwiperSlide>)
                             : (
                                 <SwiperSlide className="product-slide">
@@ -113,6 +114,7 @@ const Product = ({ product }) => {
                 </div>
             </div>
             </div>
+            <Modal isOpen={ true}/>
         </>
     )
 }
