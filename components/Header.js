@@ -81,7 +81,7 @@ const Header = () => {
                 </Link>
             </div>
             <div className="shopping-cart">
-                <Link href="/god" passHref>
+                <Link href="/cart" passHref>
                     <a>
                         <ShopIcon/>
                     </a>

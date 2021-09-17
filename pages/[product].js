@@ -15,12 +15,16 @@ import { faHeart as HeartNoFill } from '@fortawesome/free-regular-svg-icons';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 import numeral from 'numeral';
+import useCart from '../hooks/useCart';
 import Modal from '../components/Modal';
+import gsap from 'gsap'
 
 SwiperCore.use([Autoplay, Pagination, Navigation]);
 
-const Product = ({ product }) => {
-
+const Product = ({ product, productEntries }) => {
+    const { addProductCart  } = useCart();
+    console.log(product)
+    console.log(productEntries)
     const {
         productName,
         brand,
@@ -32,6 +36,36 @@ const Product = ({ product }) => {
         categories
     } = product
     const price = discount ? (productDefaultPrice - ((discount.discountPercentage/100) * productDefaultPrice)) : productDefaultPrice
+    const [isOpen, setIsOpen] = useState(false);
+    const [quantity, setQuantity] = useState(1);
+    const [variant, setVariant] = useState(productEntries[0].id);
+    console.log(productEntries)
+
+    var availability = productEntries.find(e => e.id === variant).productAvailableQuantity;
+    var productEntryPrice = productEntries.find(e => e.id === variant).price;
+
+    const handleVariant = (e) => {
+        e.preventDefault();
+        console.log(e.target.value)
+        setVariant(e.target.value)
+    }
+
+    const handleQuantity = (e) => {
+        e.preventDefault();
+        console.log(e.target.value)
+        setQuantity(e.target.value);
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const tl = gsap.timeline()
+        addProductCart({id: product.id, quantity: quantity, variant: variant});
+        tl
+            .to('.modal-card', { scale: 0, opacity: 0, duration: 0.5, ease: 'power3.inOut' })
+            .to('.modal-bg', { opacity: 0, background: 'transparent', ease: 'power3.inOut', duration: 0.5 })
+            .to('body', { duration: 0, overflow: 'auto', duration: 0 })
+            .then(() => setIsOpen(false))
+    }
 
     return (
         <>
@@ -70,7 +104,7 @@ const Product = ({ product }) => {
                             ) : <h3>{numeral(price).format('0,0.00')} BOB</h3>
                         }
                     </div>
-                    <button>Agregar Producto</button>
+                    <button onClick={ () => setIsOpen(true)}>Agregar Producto</button>
                     </div>
                     {productDesc && (
                         <div className="product-desc">
@@ -114,27 +148,75 @@ const Product = ({ product }) => {
                 </div>
             </div>
             </div>
-            <Modal isOpen={ true}/>
+            <Modal isOpen={isOpen} setIsOpen={ setIsOpen }>
+                <div className="product-modal__content">
+                    <div className="product-modal__content-title">
+                        <h2>Detalles</h2>
+                    </div>
+                    <form className="product-modal__content-body">
+                        <div className="product-size">
+                            <h4>Talla</h4>
+                            <select name="product-size" id="product-size" required onChange={ handleVariant }>
+                                {productEntries.map((e, i) => <option key={i} value={e.id}>{ e.size.sizeValue}</option>)}
+                            </select>
+                        </div>
+                        <div className="product-quantity">
+                            <h4>Cantidad</h4>
+                            <select name="product-quantity" id="product-quantity" required onChange={ handleQuantity }>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                        <div className="product-details">
+                            <div className="delivery-time">
+                                <h4>Estimado de entrega</h4>
+                                <p>{availability > 0 && quantity < availability ? "1 Dia" : "30 Dias"}</p>
+                            </div>
+                            
+                            <div className="product-subtotal">
+                                <h4>Subtotal</h4>
+                                <p>{ quantity * (productEntryPrice ? productEntryPrice : productDefaultPrice)} BOB</p>
+                            </div>
+                        </div>
+                        <div className="product-confirm-details">
+                            <button onClick={ handleSubmit }>
+                                Confirmar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </Modal>
         </>
     )
 }
 
 export const getStaticProps = async (context) => {
     const { product } = context.params;
-    const res = await axios({
+    axios.defaults.baseURL = 'http://192.168.0.2:1337'
+    const productData = await axios({
         method: 'get',
-        baseURL: 'http://192.168.0.2:1337',
         url: '/products',
         params: {
             id: product
         }
-    }
+    });
 
-    );
+    const productEntries= await axios({
+        method: 'get',
+        url: '/product-entries',
+        params: {
+            product: productData?.data[0].id
+        }        
+    })
+
     return {
         props: {
             preview: null,
-            product: res?.data[0]
+            product: productData?.data[0],
+            productEntries: productEntries?.data
         }
     }
 }
@@ -144,7 +226,6 @@ export const getStaticPaths = async () => {
         method: 'get',
         baseURL: 'http://192.168.0.2:1337',
         url: '/products',
-
     });
     const paths = allProducts?.data.map(product => `/${product.id}`)
     return {
