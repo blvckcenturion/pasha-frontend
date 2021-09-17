@@ -3431,6 +3431,11 @@ vm-browserify@1.1.2, vm-browserify@^1.0.1:
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-1.1.2.tgz#78641c488b8e6ca91a75f511e7a3b32a86e5dda0"
   integrity sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==
 
+wasend@^0.5.4:
+  version "0.5.4"
+  resolved "https://registry.yarnpkg.com/wasend/-/wasend-0.5.4.tgz#93cfae38d6ac4879a01597c05fca5d8a011f8777"
+  integrity sha512-8L6Uu+Nkj+XXXsoWhYkY6yapSKQ5QT/tRH4qYq59BcyKx6sk2T8hrgqC95VJpR+Orz6YpbwVFAvxcST7G9ZsHA==
+
 watchpack@2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/watchpack/-/watchpack-2.1.1.tgz#e99630550fca07df9f90a06056987baa40a689c7"

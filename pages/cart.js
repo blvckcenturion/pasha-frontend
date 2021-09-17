@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import useCart from '../hooks/useCart'
 import { getLatestProducts } from '../api/product'
 import { getEntry } from '../api/entry'
-
+import wasend from 'wasend'
 
 const Cart = () => {
     const [products, setProducts] = useState([])
@@ -11,9 +11,7 @@ const Cart = () => {
     const cart = getProductsCart();
     console.log(cart)
 
-    const handleOrder = () => {
 
-    }
 
     useEffect(() => {
         (async () => {
@@ -32,6 +30,21 @@ const Cart = () => {
             setProducts(productsTemp)
         })()
     }, [])
+
+    const handleOrder = () => {
+        var str = ''
+        var finalPrice = 0;
+        if (products) {
+            for (const product of products) {
+                const { entry, quantity } = product;
+                str += `|| Producto: ${product.product.productName}, Talla: ${entry.size.sizeValue}, Cantidad: ${quantity} `
+                finalPrice += product.product.productDefaultPrice * quantity;
+            }
+
+            str += `|| Total: ${finalPrice} BOB`
+        }
+        console.log(wasend.generate('59176918783', `Hola! esta es mi orden: ${str}`))
+    }
 
     if (!products) return <div>Loading...</div>
     if(products.length === 0) return <div>No hay productos en el carrito</div>
